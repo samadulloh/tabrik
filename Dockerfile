@@ -5,9 +5,13 @@ WORKDIR /app
 COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 
-# Font o'rnatish
+
 RUN apt-get update && apt-get install -y fonts-dejavu-core && rm -rf /var/lib/apt/lists/*
 
 COPY bot.py .
+COPY image_generator.py .
+COPY database.py .
+COPY *.png .
+COPY *.jpeg .
 
 CMD ["python", "bot.py"]
